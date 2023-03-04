@@ -1,12 +1,14 @@
 import {init} from "./init";
 import {contentPopulate} from "./contentPopulate";
+import {Project} from "./project";
 
 init();
-contentPopulate("Inbox");
+const inbox = new Project("Inbox");
+contentPopulate(inbox);
 
 document.getElementById("inbox").addEventListener("click", function () {
     document.getElementById("project").innerHTML = "";
-    contentPopulate("Inbox");
+    contentPopulate(inbox);
 });
 
 document.getElementById("today").addEventListener("click", function () {
