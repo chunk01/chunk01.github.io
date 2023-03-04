@@ -1,6 +1,9 @@
-import { projectList } from "./project";
+import {projectList} from "./project";
+import {Todo} from "./todo";
+
 
 const contentPopulate = (project) => {
+    let projectName = document.getElementsByClassName("active")[0].innerText;
     let head = document.createElement("h2");
     head.setAttribute("id", "projectHeader");
     head.innerText = project.title;
@@ -31,7 +34,20 @@ const contentPopulate = (project) => {
     addPopup.appendChild(buttonHolder);
 
     add.addEventListener("click", function () {
-        //insert task into list
+        for(let i = 0; i < projectList.length; i++) {
+            if (projectList[i].title == projectName) {
+                projectList[i].todoList.push(new Todo(document.getElementById("taskNameInput").value));
+                document.getElementById("itemList").innerHTML = ""
+                for(let j = 0; j < projectList[i].todoList.length; j++) {
+                    let newTask = document.createElement("button");
+                    newTask.setAttribute("id", projectList[i].todoList[j].title);
+                    newTask.innerText = projectList[i].todoList[j].title;
+                    itemList.appendChild(newTask);
+                }
+            }
+        }
+        document.getElementById("addPopup").style.visibility = "hidden";
+        document.getElementById("homeAddBtn").style.visibility = "";
     });
 
     cancel.addEventListener("click", function () {
