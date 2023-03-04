@@ -32,6 +32,10 @@ const init = () => {
     content.appendChild(dash);
     content.appendChild(innerContent);
 
+    let projectPreview = document.createElement("div");
+    projectPreview.setAttribute("id", "project");
+    innerContent.appendChild(projectPreview);
+
     let footer = document.createElement("div");
     footer.setAttribute("id", "footer");
     let footerContent = document.createElement("p");
