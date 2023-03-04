@@ -1,7 +1,9 @@
-const contentPopulate = (contentHeader) => {
+import { projectList } from "./project";
+
+const contentPopulate = (project) => {
     let head = document.createElement("h2");
     head.setAttribute("id", "projectHeader");
-    head.innerText = contentHeader;
+    head.innerText = project.title;
 
     let itemList = document.createElement("div");
     itemList.setAttribute("id", "itemList");
@@ -33,17 +35,21 @@ const contentPopulate = (contentHeader) => {
     });
 
     cancel.addEventListener("click", function () {
-        //make add popup disappear
+        document.getElementById("addPopup").style.visibility = "hidden";
+        document.getElementById("homeAddBtn").style.visibility = "";
     });
 
     addBtn.addEventListener("click", function () {
         document.getElementById("homeAddBtn").style.visibility = "hidden";
         document.getElementById("project").appendChild(addPopup);
+        document.getElementById("addPopup").style.visibility = "";
     });
 
     document.getElementById("project").appendChild(head);
     document.getElementById("project").appendChild(itemList);
     document.getElementById("project").appendChild(addBtn);
+
+    
 }
 
 export {contentPopulate};
