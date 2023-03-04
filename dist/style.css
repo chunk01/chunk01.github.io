@@ -46,6 +46,19 @@ body {
     background-color:#eee;
 }
 
+#project {
+    height:100%;
+    width:70%;
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+    padding: 50px;
+}
+
+#projectHeader {
+    font-size:35px;
+}
+
 #content {
     display:flex;
 }
