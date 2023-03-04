@@ -53,6 +53,7 @@ body {
     display:flex;
     flex-direction: column;
     padding: 50px;
+    padding-bottom: 0px;
 }
 
 #projectHeader {
@@ -61,6 +62,11 @@ body {
 
 #content {
     display:flex;
+}
+
+#itemList {
+    display:flex;
+    flex-direction: column;
 }
 
 #footer {
