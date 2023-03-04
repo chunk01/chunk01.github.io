@@ -1,4 +1,4 @@
-import {format } from 'date-fns';
+//Project class that creates Project items to contain corresponding Todo items and be stored in projectList
 
 const projectList = [];
 
@@ -6,7 +6,6 @@ class Project {
     constructor(title) {
         this.title = title;
         this.todoList = [];
-        this.date = format(new Date(), 'yyyy-MM-dd');
         projectList.push(this);
     }
 }
