@@ -1,3 +1,7 @@
+import { contentPopulate } from "./contentPopulate";
+import { Project } from "./project";
+import { projectList } from "./project";
+
 const init = () => {
     //intialize header element
     let header = document.createElement("div");
@@ -51,7 +55,7 @@ const init = () => {
     let buttonHolderDash = document.createElement("div");
     buttonHolderDash.setAttribute("id", "buttonContainerDash");
     let add = document.createElement("button");
-    add.setAttribute("id", "addProject");
+    add.setAttribute("id", "newProject");
     add.innerText = "Add";
     let cancel = document.createElement("button");
     cancel.setAttribute("id", "cancelProject");
@@ -67,12 +71,40 @@ const init = () => {
     addProject.addEventListener("click", function () {
         document.getElementById("addProject").style.visibility = "hidden";
         dash.appendChild(buttonHolderDash);
+        document.getElementById("buttonContainerDash").style.visibility = "";
     })
 
     //add click event listener for add button in add project popup button
     add.addEventListener("click", function () {
         //TODO - insert project into list
+        let newProject = new Project(document.getElementById("projectNameInput").value)
+        let newProjectDiv = document.createElement("button");
+        newProjectDiv.setAttribute("id", "projects");
+
+        newProjectDiv.addEventListener("click", function () {
+            newProjectDiv.classList.add("active");
+            document.getElementById("inbox").classList.remove("active");
+            let customProjects = document.getElementById("customProjectList").childNodes;
+            for(let i = 0; i < customProjects.length; i++) {
+                if (customProjects[i] != newProjectDiv) {
+                    customProjects[i].classList.remove("active");
+                }
+            }
+            document.getElementById("project").innerHTML = "";
+            contentPopulate(newProject);
+            
+        })
+
+        let title = document.createElement("p");
+        title.innerText = document.getElementById("projectNameInput").value;
+        let projectDelete = document.createElement("button");
+        projectDelete.setAttribute("id", "projectDelete");
+        projectDelete.innerText = "X";
+        newProjectDiv.appendChild(title);
+        //newProjectDiv.appendChild(projectDelete);
+        customProjectList.appendChild(newProjectDiv);
     });
+
 
     //add click event listener for cancel button in add project popup button
     cancel.addEventListener("click", function () {
