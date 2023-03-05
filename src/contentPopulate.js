@@ -1,10 +1,12 @@
 import {projectList} from "./project";
 import {Todo} from "./todo";
+import {loadProjectData} from "./loadProjectData";
 
 //function that populates the project content with the correct project todo items
 const contentPopulate = (project) => {
     //store which project has been clicked
     let projectName = document.getElementsByClassName("active")[0].innerText;
+    console.log(projectName)
     //initalize project title header
     let head = document.createElement("h2");
     head.setAttribute("id", "projectHeader");
@@ -17,7 +19,7 @@ const contentPopulate = (project) => {
     //initalize add button that allows new todo insertion into DOM and corresponding project object
     let addBtn = document.createElement("button");
     addBtn.setAttribute("id", "homeAddBtn");
-    addBtn.innerText = "Add Task"
+    addBtn.innerText = "+ Add Task";
 
     //initalize popup area that takes input for new todo item after pressing add button
     let addPopup = document.createElement("div");
@@ -45,9 +47,43 @@ const contentPopulate = (project) => {
                 projectList[i].todoList.push(new Todo(document.getElementById("taskNameInput").value));
                 document.getElementById("itemList").innerHTML = ""
                 for(let j = 0; j < projectList[i].todoList.length; j++) {
-                    let newTask = document.createElement("button");
+                    let newTask = document.createElement("div");
                     newTask.setAttribute("id", projectList[i].todoList[j].title);
-                    newTask.innerText = projectList[i].todoList[j].title;
+                    newTask.classList.add("todo");
+
+                    let taskLeft = document.createElement("div");
+                    taskLeft.setAttribute("id", "left");
+
+                    let taskRight = document.createElement("div");
+                    taskRight.setAttribute("id", "right");
+
+                    let checkDiv = document.createElement("div");
+                    checkDiv.setAttribute("id", "checkdiv-" + projectList[i].todoList[j].title);
+                    checkDiv.classList.add("todo-check");
+
+                    let title = document.createElement("p");
+                    title.setAttribute("id", "title-" + projectList[i].todoList[j].title);
+                    title.innerText = projectList[i].todoList[j].title;
+                    title.classList.add("todo-title");
+
+                    let date = document.createElement("p");
+                    date.setAttribute("id", "date-" + projectList[i].todoList[j].title);
+                    date.classList.add("todo-date");
+                    date.innerText = projectList[i].todoList[j].date;
+
+                    let deleteBtn = document.createElement("button");
+                    deleteBtn.setAttribute("id", "delete-" + projectList[i].todoList[j].title);
+                    deleteBtn.classList.add("todo-delete");
+                    deleteBtn.innerText = "X";
+
+                    taskLeft.appendChild(checkDiv)
+                    taskLeft.appendChild(title)
+                    taskRight.appendChild(date)
+                    taskRight.appendChild(deleteBtn)
+
+                    newTask.appendChild(taskLeft);
+                    newTask.appendChild(taskRight);
+
                     itemList.appendChild(newTask);
                 }
             }
@@ -74,6 +110,51 @@ const contentPopulate = (project) => {
     document.getElementById("project").appendChild(itemList);
     document.getElementById("project").appendChild(addBtn);
 
+    for(let i = 0; i < projectList.length; i++) {
+        if (projectList[i].title == projectName) {
+            document.getElementById("itemList").innerHTML = ""
+            for(let j = 0; j < projectList[i].todoList.length; j++) {
+                let newTask = document.createElement("div");
+                newTask.setAttribute("id", projectList[i].todoList[j].title);
+                newTask.classList.add("todo");
+
+                let taskLeft = document.createElement("div");
+                taskLeft.setAttribute("id", "left");
+
+                let taskRight = document.createElement("div");
+                taskRight.setAttribute("id", "right");
+
+                let checkDiv = document.createElement("div");
+                checkDiv.setAttribute("id", "checkdiv-" + projectList[i].todoList[j].title);
+                checkDiv.classList.add("todo-check");
+
+                let title = document.createElement("p");
+                title.setAttribute("id", "title-" + projectList[i].todoList[j].title);
+                title.innerText = projectList[i].todoList[j].title;
+                title.classList.add("todo-title");
+
+                let date = document.createElement("p");
+                date.setAttribute("id", "date-" + projectList[i].todoList[j].title);
+                date.classList.add("todo-date");
+                date.innerText = projectList[i].todoList[j].date;
+
+                let deleteBtn = document.createElement("button");
+                deleteBtn.setAttribute("id", "delete-" + projectList[i].todoList[j].title);
+                deleteBtn.classList.add("todo-delete");
+                deleteBtn.innerText = "X";
+
+                taskLeft.appendChild(checkDiv)
+                taskLeft.appendChild(title)
+                taskRight.appendChild(date)
+                taskRight.appendChild(deleteBtn)
+
+                newTask.appendChild(taskLeft);
+                newTask.appendChild(taskRight);
+
+                itemList.appendChild(newTask);
+            }
+        }
+    }
     
 }
 
