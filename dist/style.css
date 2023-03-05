@@ -32,6 +32,18 @@ body {
     max-width:300px;
     display:flex;
     flex-direction: column;
+    align-items: center;
+}
+
+#dash > button {
+    border-style:none;
+    height:50px;
+    background-color: #ddd;
+    border-radius:5px;
+}
+
+#dash > h2 {
+    padding-top:20px;
 }
 
 #default {
@@ -39,6 +51,50 @@ body {
     flex-direction: column;
     gap:20px;
     padding-top:20px;
+    width:80%;
+}
+
+#customProjectContainer {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    padding-top:20px;
+    width:80%;
+}
+
+#customProjectContainer > h2 {
+    font-size:30px;
+}
+
+#customProjectContainer > button {
+    font-size:30px;
+    border-style:none;
+    height:50px;
+    background-color: #ddd;
+    border-radius:5px;
+    font-size:20px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+#customProjectContainer > button:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+#default > button {
+    border-style:none;
+    height:50px;
+    background-color: #ddd;
+    border-radius:5px;
+    font-size:20px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+#default > button:hover {
+    background-color: lightgray;
+    cursor: pointer;
 }
 
 #innerContent {
@@ -111,6 +167,7 @@ body {
 #homeAddBtn:hover {
     background-color: lightgray;
     border-radius:5px;
+    cursor: pointer;
 }
 
 #project {
