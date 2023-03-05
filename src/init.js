@@ -48,10 +48,13 @@ const init = () => {
     customProjectList.setAttribute("id", "customProjectList");
     let addProject = document.createElement("button");
     addProject.setAttribute("id", "addProject");
-    addProject.innerText = "Add Project";
-    dash.appendChild(customProjectHeader);
-    dash.appendChild(customProjectList);
-    dash.appendChild(addProject);
+    addProject.innerText = "+ Add Project";
+    let customProjectHolder = document.createElement("div");
+    customProjectHolder.setAttribute("id", "customProjectContainer")
+    customProjectHolder.appendChild(customProjectHeader);
+    customProjectHolder.appendChild(customProjectList);
+    customProjectHolder.appendChild(addProject);
+    dash.appendChild(customProjectHolder);
     let buttonHolderDash = document.createElement("div");
     buttonHolderDash.setAttribute("id", "buttonContainerDash");
     let add = document.createElement("button");
