@@ -46,6 +46,73 @@ body {
     background-color:#eee;
 }
 
+.todo {
+    display:flex;
+    justify-content: space-between;
+    padding:10px;
+    border-radius:5px;
+}
+
+.todo:hover {
+    background-color: lightgray;
+}
+
+#left, #right {
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+
+#right {
+    right:0;
+}
+
+.todo-check {
+    width:20px;
+    height:20px;
+    border-radius: 50%;
+    border-style:solid;
+    border-width:2px;
+    background-color: #eee;
+}
+
+.todo-title {
+    font-size:30px;
+}
+
+.todo-date {
+    font-size:30px;
+}
+
+.todo-delete {
+    width:25px;
+    height:25px;
+    cursor: pointer;
+    border-radius: 50%;
+    border-width:2px;
+    background-color: #eee;
+    text-align: center;
+    font-weight: bold;
+}
+
+.todo-delete:hover {
+    color:#eee;
+    background-color: #333;
+}
+
+#homeAddBtn {
+    height:54px;
+    font-size:20px;
+    text-align: left;
+    padding-left:10px;
+    border-style:none;
+}
+
+#homeAddBtn:hover {
+    background-color: lightgray;
+    border-radius:5px;
+}
+
 #project {
     height:100%;
     width:70%;
@@ -54,6 +121,12 @@ body {
     flex-direction: column;
     padding: 50px;
     padding-bottom: 0px;
+    gap:20px;
+}
+
+.project {
+    display:flex;
+    justify-content: space-between;
 }
 
 #projectHeader {
