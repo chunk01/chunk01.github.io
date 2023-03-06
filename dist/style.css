@@ -57,7 +57,7 @@ body {
 #customProjectContainer {
     display: flex;
     flex-direction: column;
-    gap:10px;
+    gap:20px;
     padding-top:20px;
     width:80%;
 }
@@ -184,6 +184,42 @@ body {
 .project {
     display:flex;
     justify-content: space-between;
+}
+
+#projects {
+    display:flex;
+    justify-content: space-between;
+    height:50px;
+    font-size:20px;
+    align-items: center;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+#projects > p {
+    padding-left:10px;
+}
+
+#projects:hover {
+    background-color:lightgray;
+    border-radius:5px;
+    cursor: pointer;
+}
+
+.project-delete {
+    width:25px;
+    height:25px;
+    cursor: pointer;
+    border-radius: 50%;
+    border-width:2px;
+    background-color: #eee;
+    text-align: center;
+    font-weight: bold;
+}
+
+.project-delete:hover {
+    color:#eee;
+    background-color: #333;
 }
 
 #projectHeader {
