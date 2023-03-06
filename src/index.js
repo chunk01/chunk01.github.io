@@ -1,7 +1,8 @@
 import {init} from "./init";
 import {contentPopulate} from "./contentPopulate";
 import {Project} from "./project";
-
+import {displayTasksToday} from "./loadToday";
+import {displayTasksWeek} from "./loadWeek";
 //initalize page with basic todo list app structure
 init();
 //create default project named inbox
