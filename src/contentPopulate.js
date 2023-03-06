@@ -5,7 +5,7 @@ import {loadProjectData} from "./loadProjectData";
 //function that populates the project content with the correct project todo items
 const contentPopulate = (project) => {
     //store which project has been clicked
-    let projectName = document.getElementsByClassName("active")[0].innerText;
+    let projectName = document.getElementsByClassName("active")[0].childNodes[0].innerText;
     //console.log(projectName)
     //initalize project title header
     let head = document.createElement("h2");
@@ -43,6 +43,8 @@ const contentPopulate = (project) => {
     //add event listener to add button in popup that appends new todo to itemList and pushs to correct project object's todo list array
     add.addEventListener("click", function () {
         for(let i = 0; i < projectList.length; i++) {
+            console.log(projectList[i].title)
+            console.log(projectName)
             if (projectList[i].title == projectName) {
                 projectList[i].todoList.push(new Todo(document.getElementById("taskNameInput").value));
                 document.getElementById("itemList").innerHTML = ""
