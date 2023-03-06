@@ -20,16 +20,25 @@ const init = () => {
     dash.setAttribute("id", "dash");
     let defaultProjects = document.createElement("div");
     defaultProjects.setAttribute("id", "default")
-    let inbox = document.createElement("button");
+
+    let inbox = document.createElement("div");
     inbox.setAttribute("id", "inbox");
-    inbox.innerText = "Inbox";
+    let inboxText = document.createElement("p");
+    inboxText.innerText = "Inbox";
+    inbox.appendChild(inboxText)
     inbox.classList.add("active");
-    let day = document.createElement("button");
+
+    let day = document.createElement("div");
     day.setAttribute("id", "today");
-    day.innerText = "Today";
-    let week = document.createElement("button");
+    let dayText = document.createElement("p");
+    dayText.innerText = "Today";
+    day.appendChild(dayText)
+
+    let week = document.createElement("div");
     week.setAttribute("id", "week");
-    week.innerText = "This Week";
+    let weekText = document.createElement("p");
+    weekText.innerText = "This Week";
+    week.appendChild(weekText)
 
     //add event listener to default project inbox button that adds a class of active
     inbox.addEventListener("click", function () {
@@ -57,18 +66,21 @@ const init = () => {
     dash.appendChild(customProjectHolder);
     let buttonHolderDash = document.createElement("div");
     buttonHolderDash.setAttribute("id", "buttonContainerDash");
+    let innerButtonHolder = document.createElement("div");
+    innerButtonHolder.setAttribute("id", "innerButtonContainer");
     let add = document.createElement("button");
     add.setAttribute("id", "newProject");
     add.innerText = "Add";
     let cancel = document.createElement("button");
     cancel.setAttribute("id", "cancelProject");
     cancel.innerText = "Cancel";
+    innerButtonHolder.appendChild(add);
+    innerButtonHolder.appendChild(cancel);
     let input = document.createElement("input");
     input.setAttribute("type", "text");
     input.setAttribute("id", "projectNameInput");
     buttonHolderDash.appendChild(input);
-    buttonHolderDash.appendChild(add);
-    buttonHolderDash.appendChild(cancel);
+    buttonHolderDash.appendChild(innerButtonHolder);
 
     //add click event listener for add project button in dash
     addProject.addEventListener("click", function () {
@@ -102,12 +114,13 @@ const init = () => {
                     projectList.splice(index, 1);
                 }
             })
-        
-            if(document.getElementsByClassName("active")[0].childNodes[0].innerText == name) {
-                document.getElementById("project").innerHTML = "";
+
+            if (document.getElementsByClassName("active")[0].childNodes[0].innerText == name) {
                 document.getElementById("inbox").classList.add("active");
+                document.getElementById("project").innerHTML = "";
                 contentPopulate(projectList[0])
             }
+
             deleteBtn.parentNode.parentNode.remove();
             
         });
@@ -121,6 +134,14 @@ const init = () => {
                     customProjects[i].classList.remove("active");
                 }
             }
+
+            let defaultProjects = document.getElementById("default").childNodes;
+             for(let i = 0; i < defaultProjects.length; i++) {
+                if (defaultProjects[i] != newProjectDiv) {
+                    defaultProjects[i].classList.remove("active");
+                }
+            }
+
             document.getElementById("project").innerHTML = "";
             contentPopulate(newProject);
         })
