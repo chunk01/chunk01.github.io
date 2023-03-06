@@ -222,6 +222,10 @@ body {
     background-color: #333;
 }
 
+#titleContainer {
+    width:90%;
+}
+
 #projectHeader {
     font-size:35px;
 }
