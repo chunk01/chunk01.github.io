@@ -8,10 +8,11 @@ html {
 }
 
 body {
-    height:100%;
+    min-height:100vh;
     display:grid;
     grid-template-columns: 1fr;
     grid-template-rows: .5fr 4fr .25fr;
+    overflow: auto;
 }
 
 #header {
@@ -82,6 +83,33 @@ body {
     cursor: pointer;
 }
 
+#buttonContainerDash {
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+#innerButtonContainer {
+    display:flex;
+    gap:5px;
+}
+
+#innerButtonContainer > button{
+    flex:1;
+    height:30px;
+}
+
+#innerButtonContainer > button:hover{
+    cursor: pointer;
+}
+
+
+#projectNameInput {
+    height:30px;
+    padding-left:10px;
+    padding-right:10px;
+}
+
 #default > button {
     border-style:none;
     height:50px;
@@ -92,9 +120,30 @@ body {
     padding-left: 20px;
 }
 
-#default > button:hover {
-    background-color: lightgray;
+#default > div:hover {
+    background-color: darkgray;
     cursor: pointer;
+}
+
+
+#default > div {
+    height:50px;
+    border-radius:5px;
+    display:flex;
+    align-items: center;
+}
+
+#default > div > p {
+    padding-left:20px;
+    font-size:25px;
+}
+
+h2 {
+    padding-left:10px;
+}
+
+.active {
+    background-color: darkgray;
 }
 
 #innerContent {
@@ -217,6 +266,10 @@ body {
     font-weight: bold;
 }
 
+#week > p, #today > p, #inbox > p {
+    font-size:25px;
+}
+
 .project-delete:hover {
     color:#eee;
     background-color: #333;
@@ -248,5 +301,40 @@ body {
 
 #footerContent {
     color:#eee;
+    font-size:20px;
+}
+
+#addPopup > button:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+#addPopup {
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    padding-bottom:50px;
+}
+
+#buttonContainer {
+    display:flex;
+    gap:5px;
+}
+
+#buttonContainer > button{
+    flex:1;
+    height:30px;
+    font-size:20px;
+    height:50px;
+}
+
+#buttonContainer > button:hover{
+    cursor: pointer;
+}
+
+#taskNameInput {
+    padding-left:10px;
+    padding-right:10px;
+    height:50px;
     font-size:20px;
 }
