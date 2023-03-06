@@ -81,8 +81,13 @@ const init = () => {
     add.addEventListener("click", function () {
         //TODO - insert project into list
         let newProject = new Project(document.getElementById("projectNameInput").value)
-        let newProjectDiv = document.createElement("button");
+        let newProjectDiv = document.createElement("div");
         newProjectDiv.setAttribute("id", "projects");
+
+        let deleteBtn = document.createElement("button");
+        deleteBtn.setAttribute("id", "delete-" + newProject.title);
+        deleteBtn.classList.add("project-delete");
+        deleteBtn.innerText = "X";
 
         newProjectDiv.addEventListener("click", function () {
             newProjectDiv.classList.add("active");
@@ -104,6 +109,7 @@ const init = () => {
         projectDelete.setAttribute("id", "projectDelete");
         projectDelete.innerText = "X";
         newProjectDiv.appendChild(title);
+        newProjectDiv.appendChild(deleteBtn);
         //newProjectDiv.appendChild(projectDelete);
         customProjectList.appendChild(newProjectDiv);
     });
