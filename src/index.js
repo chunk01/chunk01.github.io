@@ -10,7 +10,7 @@ const inbox = new Project("Inbox");
 contentPopulate(inbox);
 
 document.getElementById("inbox").addEventListener("click", function () {
-    document.getElementById("inbox").classList.add("active")
+    document.getElementById("inbox").classList.add("active");
     let customProjects = document.getElementById("customProjectList").childNodes;
             for(let i = 0; i < customProjects.length; i++) {
                 if (customProjects[i] != document.getElementById("inbox")) {
