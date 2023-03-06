@@ -6,7 +6,7 @@ import {loadProjectData} from "./loadProjectData";
 const contentPopulate = (project) => {
     //store which project has been clicked
     let projectName = document.getElementsByClassName("active")[0].innerText;
-    console.log(projectName)
+    //console.log(projectName)
     //initalize project title header
     let head = document.createElement("h2");
     head.setAttribute("id", "projectHeader");
@@ -76,6 +76,22 @@ const contentPopulate = (project) => {
                     deleteBtn.classList.add("todo-delete");
                     deleteBtn.innerText = "X";
 
+                    deleteBtn.addEventListener("click", function () {
+                        let name = deleteBtn.id.split("-")[1];
+                        console.log(projectName)
+                        projectList.forEach((project) => {
+                            if (project.title == projectName) {
+                                for (let i = 0; i < project.todoList.length; i++) {
+                                    if (project.todoList[i].title == name) {
+                                        project.todoList.splice(i, 1);
+                                    }
+                                }
+                            }
+                        })
+                        console.log(projectList[0].todoList)
+                        deleteBtn.parentNode.parentNode.remove();
+                    });
+
                     taskLeft.appendChild(checkDiv)
                     taskLeft.appendChild(title)
                     taskRight.appendChild(date)
@@ -142,6 +158,22 @@ const contentPopulate = (project) => {
                 deleteBtn.setAttribute("id", "delete-" + projectList[i].todoList[j].title);
                 deleteBtn.classList.add("todo-delete");
                 deleteBtn.innerText = "X";
+
+                deleteBtn.addEventListener("click", function () {
+                    let name = deleteBtn.id.split("-")[1];
+                    console.log(projectName)
+                    projectList.forEach((project) => {
+                        if (project.title == projectName) {
+                            for (let i = 0; i < project.todoList.length; i++) {
+                                if (project.todoList[i].title == name) {
+                                    project.todoList.splice(i, 1);
+                                }
+                            }
+                        }
+                    })
+                    console.log(projectList[0].todoList)
+                    deleteBtn.parentNode.parentNode.remove();
+                });
 
                 taskLeft.appendChild(checkDiv)
                 taskLeft.appendChild(title)
