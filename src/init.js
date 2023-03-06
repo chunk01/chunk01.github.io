@@ -84,12 +84,31 @@ const init = () => {
         let newProjectDiv = document.createElement("div");
         newProjectDiv.setAttribute("id", "projects");
 
+        let titleHolder = document.createElement("div");
+        titleHolder.setAttribute("id", "titleContainer");
+
+        let deleteBtnHolder = document.createElement("div");
+        deleteBtnHolder.setAttribute("id", "deleteButtonContainer");
+
         let deleteBtn = document.createElement("button");
         deleteBtn.setAttribute("id", "delete-" + newProject.title);
         deleteBtn.classList.add("project-delete");
         deleteBtn.innerText = "X";
 
-        newProjectDiv.addEventListener("click", function () {
+        deleteBtn.addEventListener("click", function () {
+            let name = deleteBtn.id.split("-")[1];
+            projectList.forEach(function(project, index) {
+                if (project.title == name) {
+                    projectList.splice(index, 1);
+                }
+            })
+            deleteBtn.parentNode.parentNode.remove();
+            document.getElementById("project").innerHTML = "";
+            document.getElementById("inbox").classList.add("active");
+            contentPopulate(projectList[0])
+        });
+
+        titleHolder.addEventListener("click", function () {
             newProjectDiv.classList.add("active");
             document.getElementById("inbox").classList.remove("active");
             let customProjects = document.getElementById("customProjectList").childNodes;
@@ -100,7 +119,6 @@ const init = () => {
             }
             document.getElementById("project").innerHTML = "";
             contentPopulate(newProject);
-            
         })
 
         let title = document.createElement("p");
@@ -108,9 +126,10 @@ const init = () => {
         let projectDelete = document.createElement("button");
         projectDelete.setAttribute("id", "projectDelete");
         projectDelete.innerText = "X";
-        newProjectDiv.appendChild(title);
-        newProjectDiv.appendChild(deleteBtn);
-        //newProjectDiv.appendChild(projectDelete);
+        titleHolder.appendChild(title);
+        deleteBtnHolder.appendChild(deleteBtn);
+        newProjectDiv.appendChild(titleHolder);
+        newProjectDiv.appendChild(deleteBtnHolder);
         customProjectList.appendChild(newProjectDiv);
     });
 
