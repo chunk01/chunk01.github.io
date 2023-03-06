@@ -102,10 +102,14 @@ const init = () => {
                     projectList.splice(index, 1);
                 }
             })
+        
+            if(document.getElementsByClassName("active")[0].childNodes[0].innerText == name) {
+                document.getElementById("project").innerHTML = "";
+                document.getElementById("inbox").classList.add("active");
+                contentPopulate(projectList[0])
+            }
             deleteBtn.parentNode.parentNode.remove();
-            document.getElementById("project").innerHTML = "";
-            document.getElementById("inbox").classList.add("active");
-            contentPopulate(projectList[0])
+            
         });
 
         titleHolder.addEventListener("click", function () {
