@@ -1,5 +1,7 @@
 import {format, getDay, getDate, setDate, parseISO} from 'date-fns';
 import { projectList } from "./project";
+import {saveData} from "./saveData";
+import {loadData} from "./loadData";
 const displayTasksWeek = () => {
     let head = document.createElement("h2");
     head.setAttribute("id", "projectHeader");
@@ -68,6 +70,7 @@ const displayTasksWeek = () => {
                                 for (let i = 0; i < project.todoList.length; i++) {
                                     if (project.todoList[i].title == name) {
                                         project.todoList.splice(i, 1);
+                                        saveData(projectList);
                                     }
                                 }
                         })

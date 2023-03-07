@@ -3,12 +3,22 @@ import {contentPopulate} from "./contentPopulate";
 import {Project} from "./project";
 import {displayTasksToday} from "./loadToday";
 import {displayTasksWeek} from "./loadWeek";
-//initalize page with basic todo list app structure
+import {saveData} from "./saveData";
+import {loadData} from "./loadData";
+import { projectList } from "./project";
+
+
+
 init();
-//create default project named inbox
-const inbox = new Project("Inbox");
-//populate project div with inbox data
+loadData();
+
+if (JSON.parse(localStorage.getItem("Projects") == null)) {
+    const inbox = new Project("Inbox");
+} 
+
+let inbox = projectList[0]
 contentPopulate(inbox);
+
 
 document.getElementById("inbox").addEventListener("click", function () {
     document.getElementById("inbox").classList.add("active");

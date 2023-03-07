@@ -1,6 +1,8 @@
 import {projectList} from "./project";
 import {Todo} from "./todo";
 import {loadProjectData} from "./loadProjectData";
+import {saveData} from "./saveData";
+import {loadData} from "./loadData";
 
 //function that populates the project content with the correct project todo items
 const contentPopulate = (project) => {
@@ -27,6 +29,7 @@ const contentPopulate = (project) => {
     let input = document.createElement("input");
     input.setAttribute("type", "text");
     input.setAttribute("id", "taskNameInput");
+    input.setAttribute("maxlength", 20);
     addPopup.appendChild(input);
     let buttonHolder = document.createElement("div");
     buttonHolder.setAttribute("id", "buttonContainer");
@@ -43,10 +46,9 @@ const contentPopulate = (project) => {
     //add event listener to add button in popup that appends new todo to itemList and pushs to correct project object's todo list array
     add.addEventListener("click", function () {
         for(let i = 0; i < projectList.length; i++) {
-            console.log(projectList[i].title)
-            console.log(projectName)
             if (projectList[i].title == projectName) {
                 projectList[i].todoList.push(new Todo(document.getElementById("taskNameInput").value));
+                saveData(projectList);
                 document.getElementById("itemList").innerHTML = ""
                 for(let j = 0; j < projectList[i].todoList.length; j++) {
                     let newTask = document.createElement("div");
@@ -86,11 +88,12 @@ const contentPopulate = (project) => {
                                 for (let i = 0; i < project.todoList.length; i++) {
                                     if (project.todoList[i].title == name) {
                                         project.todoList.splice(i, 1);
+                                        saveData(projectList);
                                     }
                                 }
                             }
                         })
-                        console.log(projectList[0].todoList)
+
                         deleteBtn.parentNode.parentNode.remove();
                     });
 
@@ -108,6 +111,7 @@ const contentPopulate = (project) => {
         }
         document.getElementById("addPopup").style.visibility = "hidden";
         document.getElementById("homeAddBtn").style.visibility = "";
+        document.getElementById("taskNameInput").value = "";
     });
 
     //add event listener to cancel button in popup that cancels new todo creation
@@ -169,6 +173,7 @@ const contentPopulate = (project) => {
                             for (let i = 0; i < project.todoList.length; i++) {
                                 if (project.todoList[i].title == name) {
                                     project.todoList.splice(i, 1);
+                                    saveData(projectList)
                                 }
                             }
                         }

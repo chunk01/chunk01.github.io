@@ -1,5 +1,5 @@
 //Project class that creates Project items to contain corresponding Todo items and be stored in projectList
-
+import { saveData } from "./saveData";
 const projectList = [];
 
 class Project {
@@ -7,6 +7,7 @@ class Project {
         this.title = title;
         this.todoList = [];
         projectList.push(this);
+        saveData(projectList);
     }
 }
 

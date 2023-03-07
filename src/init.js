@@ -1,6 +1,8 @@
 import { contentPopulate } from "./contentPopulate";
 import { Project } from "./project";
 import { projectList } from "./project";
+import {saveData} from "./saveData";
+import {loadData} from "./loadData";
 
 const init = () => {
     //intialize header element
@@ -79,6 +81,7 @@ const init = () => {
     let input = document.createElement("input");
     input.setAttribute("type", "text");
     input.setAttribute("id", "projectNameInput");
+    input.setAttribute("maxlength", 15);
     buttonHolderDash.appendChild(input);
     buttonHolderDash.appendChild(innerButtonHolder);
 
@@ -87,12 +90,14 @@ const init = () => {
         document.getElementById("addProject").style.visibility = "hidden";
         dash.appendChild(buttonHolderDash);
         document.getElementById("buttonContainerDash").style.visibility = "";
+        document.getElementById("projectNameInput").value = "";
     })
 
     //add click event listener for add button in add project popup button
     add.addEventListener("click", function () {
         //TODO - insert project into list
-        let newProject = new Project(document.getElementById("projectNameInput").value)
+        let newProject = new Project(document.getElementById("projectNameInput").value);
+        
         let newProjectDiv = document.createElement("div");
         newProjectDiv.setAttribute("id", "projects");
 
@@ -112,6 +117,7 @@ const init = () => {
             projectList.forEach(function(project, index) {
                 if (project.title == name) {
                     projectList.splice(index, 1);
+                    saveData(projectList);
                 }
             })
 
@@ -144,7 +150,7 @@ const init = () => {
 
             document.getElementById("project").innerHTML = "";
             contentPopulate(newProject);
-        })
+        });
 
         let title = document.createElement("p");
         title.innerText = document.getElementById("projectNameInput").value;
@@ -156,6 +162,9 @@ const init = () => {
         newProjectDiv.appendChild(titleHolder);
         newProjectDiv.appendChild(deleteBtnHolder);
         customProjectList.appendChild(newProjectDiv);
+
+        document.getElementById("buttonContainerDash").style.visibility = "hidden";
+        document.getElementById("addProject").style.visibility = "";
     });
 
 
