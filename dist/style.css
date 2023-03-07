@@ -31,6 +31,7 @@ body {
     flex:1;
     background-color:#ddd;
     max-width:300px;
+    min-width:270px;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -53,6 +54,10 @@ body {
     gap:20px;
     padding-top:20px;
     width:80%;
+}
+
+#customProjectList >div {
+    border-radius: 5px;
 }
 
 #customProjectContainer {
@@ -170,6 +175,7 @@ h2 {
 
 #right {
     right:0;
+    min-width: 175px;
 }
 
 .todo-check {
@@ -241,7 +247,7 @@ h2 {
     height:50px;
     font-size:20px;
     align-items: center;
-    padding-left:10px;
+    padding-left:20px;
     padding-right:10px;
 }
 
@@ -250,7 +256,7 @@ h2 {
 }
 
 #projects:hover {
-    background-color:lightgray;
+    background-color:darkgray;
     border-radius:5px;
     cursor: pointer;
 }
@@ -316,6 +322,14 @@ h2 {
     padding-bottom:50px;
 }
 
+#addPopup > input {
+    border-radius:5px;
+}
+
+#addPopup > div > button {
+    border-radius:5px;
+}
+
 #buttonContainer {
     display:flex;
     gap:5px;
@@ -332,9 +346,31 @@ h2 {
     cursor: pointer;
 }
 
+#buttonContainerDash {
+    padding-bottom: 50px;
+}
+
+#buttonContainerDash > input {
+    border-radius:5px;
+}
+
+#buttonContainerDash > div > button {
+    border-radius:5px;
+}
+
 #taskNameInput {
     padding-left:10px;
     padding-right:10px;
     height:50px;
     font-size:20px;
+}
+
+#titleContainer {
+    height: 100%;
+    display:flex;
+    align-items: center;
+}
+
+#titleContainer > p {
+    font-size:25px;
 }
