@@ -141,8 +141,22 @@ body {
     width:80%;
 }
 
-#customProjectList >div {
+#customProjectList > div {
     border-radius: 5px;
+}
+
+#projects > img {
+    height:30px;
+    width:30px;
+}
+
+#projects > #titleContainer > p {
+    padding-left:10px;
+}
+
+#projects {
+    display:flex;
+    align-items: center;
 }
 
 #customProjectContainer {
