@@ -171,6 +171,9 @@ const init = () => {
         deleteBtn.classList.add("project-delete");
         deleteBtn.innerText = "X";
 
+        let projectImg = document.createElement("img");
+        projectImg.setAttribute("src", "./images/project.svg");
+
         deleteBtn.addEventListener("click", function () {
             let name = deleteBtn.id.split("-")[1];
             projectList.forEach(function(project, index) {
@@ -218,6 +221,7 @@ const init = () => {
         projectDelete.innerText = "X";
         titleHolder.appendChild(title);
         deleteBtnHolder.appendChild(deleteBtn);
+        newProjectDiv.appendChild(projectImg);
         newProjectDiv.appendChild(titleHolder);
         newProjectDiv.appendChild(deleteBtnHolder);
         customProjectList.appendChild(newProjectDiv);
