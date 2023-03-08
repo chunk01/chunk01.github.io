@@ -15,6 +15,8 @@ body {
     overflow: auto;
 }
 
+/* header */
+
 #header {
     background-color:#333;
     display:flex;
@@ -27,11 +29,13 @@ body {
     font-size: 50px;
 }
 
+/* dash */
+
 #dash {
     flex:1;
     background-color:#ddd;
     max-width:300px;
-    min-width:270px;
+    min-width:300px;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -108,11 +112,36 @@ body {
     cursor: pointer;
 }
 
+#newProject {
+    border:1px solid #99dd99;
+    background-color:#aaffaa;
+    font-weight:bold;
+}
+
+#cancelProject {
+    border: 1px solid #eeadad;
+    background-color:#ffbebe;
+    font-weight:bold;
+}
+
+#newProject:hover {
+    background-color:#a6f0a6;
+}
+
+#cancelProject:hover {
+    background-color:#f5b2b2;
+}
 
 #projectNameInput {
     height:30px;
     padding-left:10px;
     padding-right:10px;
+    border:1px solid #aaa;
+    border-radius:5px;
+}
+
+#projectNameInput:focus {
+    outline: none;
 }
 
 #default > button {
@@ -129,7 +158,6 @@ body {
     background-color: darkgray;
     cursor: pointer;
 }
-
 
 #default > div {
     height:50px;
@@ -150,6 +178,90 @@ h2 {
 .active {
     background-color: darkgray;
 }
+
+.project {
+    display:flex;
+    justify-content: space-between;
+}
+
+#projects {
+    display:flex;
+    justify-content: space-between;
+    height:50px;
+    font-size:20px;
+    align-items: center;
+    padding-left:20px;
+    padding-right:10px;
+}
+
+#projects > p {
+    padding-left:10px;
+}
+
+#projects:hover {
+    background-color:darkgray;
+    border-radius:5px;
+    cursor: pointer;
+}
+
+.project-delete {
+    width:25px;
+    height:25px;
+    cursor: pointer;
+    border-radius: 50%;
+    border:1px solid #aaa;
+    background-color: #eee;
+    text-align: center;
+    font-weight: bold;
+}
+
+#week > p, #today > p, #inbox > p {
+    font-size:25px;
+}
+
+.project-delete:hover {
+    color:#eee;
+    background-color: #333;
+}
+
+#project {
+    height:100%;
+    width:70%;
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+    padding: 50px;
+    padding-bottom: 0px;
+    gap:20px;
+}
+
+#titleContainer {
+    width:90%;
+}
+
+#projectHeader {
+    font-size:35px;
+}
+
+#buttonContainerDash {
+    padding-bottom: 50px;
+}
+
+#buttonContainerDash > input {
+    border-radius:5px;
+}
+
+#buttonContainerDash > div > button {
+    border-radius:5px;
+}
+
+#titleContainer {
+    height: 100%;
+    display:flex;
+    align-items: center;
+}
+
+/* inner content */
 
 #innerContent {
     flex:4;
@@ -200,7 +312,7 @@ h2 {
     height:25px;
     cursor: pointer;
     border-radius: 50%;
-    border-width:2px;
+    border:1px solid #aaa;
     background-color: #eee;
     text-align: center;
     font-weight: bold;
@@ -225,70 +337,6 @@ h2 {
     cursor: pointer;
 }
 
-#project {
-    height:100%;
-    width:70%;
-    margin:auto;
-    display:flex;
-    flex-direction: column;
-    padding: 50px;
-    padding-bottom: 0px;
-    gap:20px;
-}
-
-.project {
-    display:flex;
-    justify-content: space-between;
-}
-
-#projects {
-    display:flex;
-    justify-content: space-between;
-    height:50px;
-    font-size:20px;
-    align-items: center;
-    padding-left:20px;
-    padding-right:10px;
-}
-
-#projects > p {
-    padding-left:10px;
-}
-
-#projects:hover {
-    background-color:darkgray;
-    border-radius:5px;
-    cursor: pointer;
-}
-
-.project-delete {
-    width:25px;
-    height:25px;
-    cursor: pointer;
-    border-radius: 50%;
-    border-width:2px;
-    background-color: #eee;
-    text-align: center;
-    font-weight: bold;
-}
-
-#week > p, #today > p, #inbox > p {
-    font-size:25px;
-}
-
-.project-delete:hover {
-    color:#eee;
-    background-color: #333;
-}
-
-#titleContainer {
-    width:90%;
-}
-
-#projectHeader {
-    font-size:35px;
-}
-
 #content {
     display:flex;
 }
@@ -298,21 +346,12 @@ h2 {
     flex-direction: column;
 }
 
-#footer {
-    background-color:#333;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+#addTask:hover {
+    background-color:#a6f0a6;
 }
 
-#footerContent {
-    color:#eee;
-    font-size:20px;
-}
-
-#addPopup > button:hover {
-    background-color: lightgray;
-    cursor: pointer;
+#cancel:hover {
+    background-color:#f5b2b2;
 }
 
 #addPopup {
@@ -322,7 +361,20 @@ h2 {
     padding-bottom:50px;
 }
 
+#addTask {
+    border:1px solid #99dd99;
+    background-color:#aaffaa;
+    font-weight:bold;
+}
+
+#cancel {
+    border: 1px solid #eeadad;
+    background-color:#ffbebe;
+    font-weight:bold;
+}
+
 #addPopup > input {
+    border: 1px solid #aaa;
     border-radius:5px;
 }
 
@@ -346,29 +398,11 @@ h2 {
     cursor: pointer;
 }
 
-#buttonContainerDash {
-    padding-bottom: 50px;
-}
-
-#buttonContainerDash > input {
-    border-radius:5px;
-}
-
-#buttonContainerDash > div > button {
-    border-radius:5px;
-}
-
 #taskNameInput {
     padding-left:10px;
     padding-right:10px;
     height:50px;
     font-size:20px;
-}
-
-#titleContainer {
-    height: 100%;
-    display:flex;
-    align-items: center;
 }
 
 #titleContainer > p {
@@ -378,4 +412,18 @@ h2 {
 .todo-check > img {
     height:100%;
     width:100%;
+}
+
+/* footer */
+
+#footer {
+    background-color:#333;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footerContent {
+    color:#eee;
+    font-size:20px;
 }
