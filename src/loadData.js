@@ -17,6 +17,9 @@ const loadData = () => {
             let newProjectDiv = document.createElement("div");
             newProjectDiv.setAttribute("id", "projects");
 
+            let projectImg = document.createElement("img");
+            projectImg.setAttribute("src", "./images/project.svg");
+
             let titleHolder = document.createElement("div");
             titleHolder.setAttribute("id", "titleContainer");
 
@@ -75,6 +78,7 @@ const loadData = () => {
             projectDelete.innerText = "X";
             titleHolder.appendChild(title);
             deleteBtnHolder.appendChild(deleteBtn);
+            newProjectDiv.appendChild(projectImg);
             newProjectDiv.appendChild(titleHolder);
             newProjectDiv.appendChild(deleteBtnHolder);
             customProjectList.appendChild(newProjectDiv);
