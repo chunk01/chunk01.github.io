@@ -46,7 +46,8 @@ const contentPopulate = (project) => {
     //add event listener to add button in popup that appends new todo to itemList and pushs to correct project object's todo list array
     add.addEventListener("click", function () {
         for(let i = 0; i < projectList.length; i++) {
-            if (projectList[i].title == projectName) {
+            if (projectList[i].title == projectName && document.getElementById("taskNameInput").value != "") {
+                document.getElementById("taskNameInput").style.borderColor = "";
                 projectList[i].todoList.push(new Todo(document.getElementById("taskNameInput").value));
                 saveData(projectList);
                 document.getElementById("itemList").innerHTML = ""
@@ -64,6 +65,10 @@ const contentPopulate = (project) => {
                     let checkDiv = document.createElement("div");
                     checkDiv.setAttribute("id", "checkdiv-" + projectList[i].todoList[j].title);
                     checkDiv.classList.add("todo-check");
+                    let img = document.createElement("img")
+                    img.setAttribute("src", "./images/check.svg");
+                    img.style.visibility = "hidden";
+                    checkDiv.appendChild(img);
 
                     let title = document.createElement("p");
                     title.setAttribute("id", "title-" + projectList[i].todoList[j].title);
@@ -97,6 +102,30 @@ const contentPopulate = (project) => {
                         deleteBtn.parentNode.parentNode.remove();
                     });
 
+                    checkDiv.addEventListener("click", function () {
+                        let taskName = checkDiv.id.split("-")[1];
+                        for(let i = 0; i < projectList.length; i++) {
+                            if(projectList[i].title == projectName) {
+                                for(let j = 0; j < projectList[i].todoList.length; j++) {
+                                    if(projectList[i].todoList[j].title == taskName) {
+                                        if (projectList[i].todoList[j].checked == false) {
+                                            projectList[i].todoList[j].checked = true;
+                                            let todo = document.getElementById(checkDiv.id);
+                                            todo.childNodes[0].style.visibility = "";
+                                            saveData(projectList)
+                                        } else {
+                                            projectList[i].todoList[j].checked = false;
+                                            let todo = document.getElementById(checkDiv.id);
+                                            todo.childNodes[0].style.visibility = "hidden";
+                                            saveData(projectList)
+                                        }
+                                        saveData(projectList);
+                                    }
+                                }
+                            }
+                        }
+                    });
+
                     taskLeft.appendChild(checkDiv)
                     taskLeft.appendChild(title)
                     taskRight.appendChild(date)
@@ -106,16 +135,21 @@ const contentPopulate = (project) => {
                     newTask.appendChild(taskRight);
 
                     itemList.appendChild(newTask);
+
+                    document.getElementById("addPopup").style.visibility = "hidden";
+                    document.getElementById("homeAddBtn").style.visibility = "";
+                    document.getElementById("taskNameInput").value = "";
                 }
+            } else {
+                document.getElementById("taskNameInput").style.borderColor = "red";
             }
         }
-        document.getElementById("addPopup").style.visibility = "hidden";
-        document.getElementById("homeAddBtn").style.visibility = "";
-        document.getElementById("taskNameInput").value = "";
+        
     });
 
     //add event listener to cancel button in popup that cancels new todo creation
     cancel.addEventListener("click", function () {
+        document.getElementById("taskNameInput").style.borderColor = "";
         document.getElementById("addPopup").style.visibility = "hidden";
         document.getElementById("homeAddBtn").style.visibility = "";
     });
@@ -149,7 +183,11 @@ const contentPopulate = (project) => {
                 let checkDiv = document.createElement("div");
                 checkDiv.setAttribute("id", "checkdiv-" + projectList[i].todoList[j].title);
                 checkDiv.classList.add("todo-check");
-
+                let img = document.createElement("img")
+                img.setAttribute("src", "./images/check.svg");
+                img.style.visibility = "hidden"
+                checkDiv.appendChild(img);
+                
                 let title = document.createElement("p");
                 title.setAttribute("id", "title-" + projectList[i].todoList[j].title);
                 title.innerText = projectList[i].todoList[j].title;
@@ -182,6 +220,30 @@ const contentPopulate = (project) => {
                     deleteBtn.parentNode.parentNode.remove();
                 });
 
+                checkDiv.addEventListener("click", function () {
+                    let taskName = checkDiv.id.split("-")[1];
+                    for(let i = 0; i < projectList.length; i++) {
+                        if(projectList[i].title == projectName) {
+                            for(let j = 0; j < projectList[i].todoList.length; j++) {
+                                if(projectList[i].todoList[j].title == taskName) {
+                                    if (projectList[i].todoList[j].checked == false) {
+                                        projectList[i].todoList[j].checked = true;
+                                        let todo = document.getElementById(checkDiv.id);
+                                        todo.childNodes[0].style.visibility = "";
+                                        saveData(projectList)
+                                    } else {
+                                        projectList[i].todoList[j].checked = false;
+                                        let todo = document.getElementById(checkDiv.id);
+                                        todo.childNodes[0].style.visibility = "hidden";
+                                        saveData(projectList)
+                                    }
+                                    saveData(projectList);
+                                }
+                            }
+                        }
+                    }
+                });
+
                 taskLeft.appendChild(checkDiv)
                 taskLeft.appendChild(title)
                 taskRight.appendChild(date)
@@ -191,7 +253,29 @@ const contentPopulate = (project) => {
                 newTask.appendChild(taskRight);
 
                 itemList.appendChild(newTask);
+
+                let taskName = checkDiv.id.split("-")[1];
+                    for(let i = 0; i < projectList.length; i++) {
+                        if(projectList[i].title == projectName) {
+                            for(let j = 0; j < projectList[i].todoList.length; j++) {
+                                if(projectList[i].todoList[j].title == taskName) {
+                                    if (projectList[i].todoList[j].checked == false) {
+                                        let todo = document.getElementById(checkDiv.id);
+                                        todo.childNodes[0].style.visibility = "hidden";
+                                        saveData(projectList)
+                                    } else {
+                                        let todo = document.getElementById(checkDiv.id);
+                                        todo.childNodes[0].style.visibility = "";
+                                        saveData(projectList)
+                                    }
+                                    saveData(projectList);
+                                }
+                            }
+                        }
+                    }
+
             }
+
         }
     }
     

@@ -4,6 +4,7 @@ import {saveData} from "./saveData";
 import {loadData} from "./loadData";
 
 const displayTasksToday = () => {
+    let projectName = document.getElementsByClassName("active")[0].childNodes[0].innerText;
     let head = document.createElement("h2");
     head.setAttribute("id", "projectHeader");
     head.innerText = "Today";
@@ -33,6 +34,10 @@ const displayTasksToday = () => {
                     let checkDiv = document.createElement("div");
                     checkDiv.setAttribute("id", "checkdiv-" + projectList[i].todoList[j].title);
                     checkDiv.classList.add("todo-check");
+                    let img = document.createElement("img")
+                    img.setAttribute("src", "./images/check.svg");
+                    img.style.visibility = "hidden"
+                    checkDiv.appendChild(img);
 
                     let title = document.createElement("p");
                     title.setAttribute("id", "title-" + projectList[i].todoList[j].title);
@@ -61,6 +66,30 @@ const displayTasksToday = () => {
                         })
                         deleteBtn.parentNode.parentNode.remove();
                     });
+
+                    checkDiv.addEventListener("click", function () {
+                        let taskName = checkDiv.id.split("-")[1];
+                        for(let i = 0; i < projectList.length; i++) {
+                                for(let j = 0; j < projectList[i].todoList.length; j++) {
+                                    if(projectList[i].todoList[j].title == taskName) {
+                                        if (projectList[i].todoList[j].checked == false) {
+                                            projectList[i].todoList[j].checked = true;
+                                            let todo = document.getElementById(checkDiv.id);
+                                            todo.childNodes[0].style.visibility = "";
+                                            saveData(projectList)
+                                        } else {
+                                            projectList[i].todoList[j].checked = false;
+                                            let todo = document.getElementById(checkDiv.id);
+                                            todo.childNodes[0].style.visibility = "hidden";
+                                            saveData(projectList)
+                                        }
+                                        saveData(projectList);
+                                    }
+                                }
+
+                        }
+                    });
+
                     taskLeft.appendChild(checkDiv)
                     taskLeft.appendChild(title)
                     taskRight.appendChild(date)
@@ -68,6 +97,25 @@ const displayTasksToday = () => {
                     newTask.appendChild(taskLeft);
                     newTask.appendChild(taskRight);
                     itemList.appendChild(newTask);
+
+                    let taskName = checkDiv.id.split("-")[1];
+                    for(let i = 0; i < projectList.length; i++) {
+                            for(let j = 0; j < projectList[i].todoList.length; j++) {
+                                if(projectList[i].todoList[j].title == taskName) {
+                                    if (projectList[i].todoList[j].checked == false) {
+                                        let todo = document.getElementById(checkDiv.id);
+                                        todo.childNodes[0].style.visibility = "hidden";
+                                        saveData(projectList)
+                                    } else {
+                                        let todo = document.getElementById(checkDiv.id);
+                                        todo.childNodes[0].style.visibility = "";
+                                        saveData(projectList)
+                                    }
+                                    saveData(projectList);
+                                }
+                            }
+                        
+                    }
             }
         }
     }
