@@ -146,9 +146,9 @@ const init = () => {
 
     //add click event listener for add project button in dash
     addProject.addEventListener("click", function () {
-        document.getElementById("addProject").style.display = "none";
+        document.getElementById("addProject").style.visibility = "hidden";
         dash.appendChild(buttonHolderDash);
-        document.getElementById("buttonContainerDash").style.display = "flex";
+        document.getElementById("buttonContainerDash").style.visibility = "";
         document.getElementById("projectNameInput").value = "";
     })
 
@@ -226,15 +226,15 @@ const init = () => {
         newProjectDiv.appendChild(deleteBtnHolder);
         customProjectList.appendChild(newProjectDiv);
 
-        document.getElementById("buttonContainerDash").style.display = "none";
-        document.getElementById("addProject").style.display = "block";
+        document.getElementById("buttonContainerDash").style.visibility = "hidden";
+        document.getElementById("addProject").style.visibility = "";
     });
 
 
     //add click event listener for cancel button in add project popup button
     cancel.addEventListener("click", function () {
-        document.getElementById("buttonContainerDash").style.display = "none";
-        document.getElementById("addProject").style.display = "block";
+        document.getElementById("buttonContainerDash").style.visibility = "hidden";
+        document.getElementById("addProject").style.visibility = "";
     });
     
     //initalize inner content element inside of main content element

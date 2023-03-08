@@ -136,8 +136,8 @@ const contentPopulate = (project) => {
 
                     itemList.appendChild(newTask);
 
-                    document.getElementById("addPopup").style.display = "none";
-                    document.getElementById("homeAddBtn").style.display = "flex";
+                    document.getElementById("addPopup").style.visibility = "hidden";
+                    document.getElementById("homeAddBtn").style.visibility = "";
                     document.getElementById("taskNameInput").value = "";
                 }
             } else {
@@ -150,15 +150,15 @@ const contentPopulate = (project) => {
     //add event listener to cancel button in popup that cancels new todo creation
     cancel.addEventListener("click", function () {
         document.getElementById("taskNameInput").style.borderColor = "";
-        document.getElementById("addPopup").style.display = "none";
-        document.getElementById("homeAddBtn").style.display = "flex";
+        document.getElementById("addPopup").style.visibility = "hidden";
+        document.getElementById("homeAddBtn").style.visibility = "";
     });
 
     //add event listener to initial todo add button to show add pop up
     addBtn.addEventListener("click", function () {
-        document.getElementById("homeAddBtn").style.display = "none";
+        document.getElementById("homeAddBtn").style.visibility = "hidden";
         document.getElementById("project").appendChild(addPopup);
-        document.getElementById("addPopup").style.display = "flex";
+        document.getElementById("addPopup").style.visibility = "";
     });
 
     //add main project content to project div
