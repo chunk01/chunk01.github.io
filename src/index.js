@@ -8,9 +8,10 @@ import {loadData} from "./loadData";
 import { projectList } from "./project";
 
 
-
 init();
 loadData();
+
+
 
 if (JSON.parse(localStorage.getItem("Projects") == null)) {
     const inbox = new Project("Inbox");

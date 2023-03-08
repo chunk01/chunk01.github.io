@@ -11,7 +11,31 @@ const init = () => {
     let title = document.createElement("h1");
     title.setAttribute("id", "title");
     title.innerText = "Todo List";
+
+    let label = document.createElement("label")
+    label.classList.add("switch");
+    let checkBox = document.createElement("input");
+    checkBox.setAttribute("type", "checkbox");
+    let span = document.createElement("span");
+    span.classList.add("slider-round");
+    label.appendChild(checkBox);
+    label.appendChild(span);
+
     header.appendChild(title);
+    header.appendChild(label);
+
+    checkBox.addEventListener("click", function () {
+        if(checkBox.checked == true) {
+            secondTheme();
+            localStorage.setItem("theme-state", true);
+        } else {
+            header.classList.remove("pinkify");
+            dash.classList.remove("pinkify");
+            innerContent.classList.remove("pinkify");
+            footer.classList.remove("pinkify");
+            localStorage.setItem("theme-state", false);
+        }
+    })
 
     //initalize content element
     let content = document.createElement("div");
@@ -198,6 +222,28 @@ const init = () => {
     document.body.appendChild(content);
     document.body.appendChild(footer);
 
+    checkBox.checked = JSON.parse(localStorage.getItem("theme-state"));
+    if(checkBox.checked == true) {
+        secondTheme();
+    } else {
+        header.classList.remove("pinkify");
+        dash.classList.remove("pinkify");
+        innerContent.classList.remove("pinkify");
+        footer.classList.remove("pinkify");
+    }
+
+}
+
+function secondTheme () {
+    let header = document.getElementById("header");
+    let dash = document.getElementById("dash");
+    let innerContent = document.getElementById("innerContent");
+    let footer = document.getElementById("footer");
+
+    header.classList.add("pinkify");
+    dash.classList.add("pinkify");
+    innerContent.classList.add("pinkify");
+    footer.classList.add("pinkify");
 }
 
 export {init};
