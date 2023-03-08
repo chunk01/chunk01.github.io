@@ -21,8 +21,34 @@ const init = () => {
     label.appendChild(checkBox);
     label.appendChild(span);
 
+    let dropDown = document.createElement("img");
+    dropDown.setAttribute("id", "dashBtn");
+    dropDown.setAttribute("src", "./images/menu.svg");
+    dropDown.classList.add("closed");
+    
+    dropDown.addEventListener("click", function () {
+        if (document.getElementById("dashBtn").classList[0] == "closed") {
+            document.getElementById("dashBtn").classList.remove("closed");
+            document.getElementById("dashBtn").classList.add("open");
+            document.getElementById("dash").style.display = "flex";
+        } else {
+            document.getElementById("dashBtn").classList.remove("open");
+            document.getElementById("dashBtn").classList.add("closed");
+            document.getElementById("dash").style.display = "none";
+        }
+
+
+        
+    })
+
+    let options = document.createElement("div");
+    options.setAttribute("id", "optionsContainer");
+    options.appendChild(label);
+    options.appendChild(dropDown);
+
     header.appendChild(title);
-    header.appendChild(label);
+    header.appendChild(options);
+    
 
     checkBox.addEventListener("click", function () {
         if(checkBox.checked == true) {
@@ -51,20 +77,29 @@ const init = () => {
     inbox.setAttribute("id", "inbox");
     let inboxText = document.createElement("p");
     inboxText.innerText = "Inbox";
-    inbox.appendChild(inboxText)
+    let inboxImg = document.createElement("img");
+    inboxImg.setAttribute("src", "./images/inbox.svg");
+    inbox.appendChild(inboxImg);
+    inbox.appendChild(inboxText);
     inbox.classList.add("active");
 
     let day = document.createElement("div");
     day.setAttribute("id", "today");
     let dayText = document.createElement("p");
     dayText.innerText = "Today";
-    day.appendChild(dayText)
+    let todayImg = document.createElement("img");
+    todayImg.setAttribute("src", "./images/today.svg");
+    day.appendChild(todayImg);
+    day.appendChild(dayText);
 
     let week = document.createElement("div");
     week.setAttribute("id", "week");
     let weekText = document.createElement("p");
     weekText.innerText = "This Week";
-    week.appendChild(weekText)
+    let weekImg = document.createElement("img");
+    weekImg.setAttribute("src", "./images/thisweek.svg");
+    week.appendChild(weekImg);
+    week.appendChild(weekText);
 
     //add event listener to default project inbox button that adds a class of active
     inbox.addEventListener("click", function () {
@@ -111,9 +146,9 @@ const init = () => {
 
     //add click event listener for add project button in dash
     addProject.addEventListener("click", function () {
-        document.getElementById("addProject").style.visibility = "hidden";
+        document.getElementById("addProject").style.display = "none";
         dash.appendChild(buttonHolderDash);
-        document.getElementById("buttonContainerDash").style.visibility = "";
+        document.getElementById("buttonContainerDash").style.display = "flex";
         document.getElementById("projectNameInput").value = "";
     })
 
@@ -187,15 +222,15 @@ const init = () => {
         newProjectDiv.appendChild(deleteBtnHolder);
         customProjectList.appendChild(newProjectDiv);
 
-        document.getElementById("buttonContainerDash").style.visibility = "hidden";
-        document.getElementById("addProject").style.visibility = "";
+        document.getElementById("buttonContainerDash").style.display = "none";
+        document.getElementById("addProject").style.display = "flex";
     });
 
 
     //add click event listener for cancel button in add project popup button
     cancel.addEventListener("click", function () {
-        document.getElementById("buttonContainerDash").style.visibility = "hidden";
-        document.getElementById("addProject").style.visibility = "";
+        document.getElementById("buttonContainerDash").style.display = "none";
+        document.getElementById("addProject").style.display = "flex";
     });
     
     //initalize inner content element inside of main content element
