@@ -22,12 +22,75 @@ body {
     display:flex;
     align-items: center;
     padding-left:20px;
+    justify-content: space-between;
 }
 
 #title {
     color:#eee;
     font-size: 50px;
 }
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right:50px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider-round {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider-round:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider-round {
+    background-color: #ffdfe5;
+  }
+  
+  input:focus + .slider-round {
+    box-shadow: 0 0 1px darkgray;
+  }
+  
+  input:checked + .slider-round:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  .slider-round {
+    border-radius: 34px;
+  }
+  
+  .slider-round:before {
+    border-radius: 50%;
+  }
 
 /* dash */
 
@@ -430,4 +493,50 @@ h2 {
 #footerContent {
     color:#eee;
     font-size:20px;
+}
+
+/* theme */
+
+#innerContent.pinkify {
+    background-color:#ffdfe5;
+}
+
+#innerContent.pinkify > #project > #homeAddBtn{
+    background-color:#ffdfe5;
+}
+
+#innerContent.pinkify > #project > #itemList > div:hover{
+    background-color:#ff6699;
+}
+
+#dash.pinkify {
+    background-color:#ffccd5;
+}
+
+#dash.pinkify > #default > div.active {
+    background-color:#ff6699;
+}
+
+#dash.pinkify > #default > div:hover {
+    background-color:#ff6699;
+}
+
+#dash.pinkify > #customProjectContainer > #addProject {
+    background-color:#ffccd5;
+}
+
+#dash.pinkify > #customProjectContainer > #addProject:hover {
+    background-color:#ff6699;
+}
+
+#dash.pinkify > #customProjectContainer > #customProjectList > div:hover{
+    background-color:#ff6699;
+}
+
+#dash.pinkify > #customProjectContainer > #customProjectList > div.active{
+    background-color:#ff6699;
+}
+
+#header.pinkify, #footer.pinkify {
+    background-color: #ff6699;
 }
