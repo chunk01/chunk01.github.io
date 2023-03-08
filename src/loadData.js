@@ -79,7 +79,11 @@ const loadData = () => {
             newProjectDiv.appendChild(deleteBtnHolder);
             customProjectList.appendChild(newProjectDiv);
 
+            
+
         }
+
+        
         
         console.log(localStorage.getItem("Projects"))
     }
