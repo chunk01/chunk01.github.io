@@ -7,7 +7,7 @@ import {loadData} from "./loadData";
 //function that populates the project content with the correct project todo items
 const contentPopulate = (project) => {
     //store which project has been clicked
-    let projectName = document.getElementsByClassName("active")[0].childNodes[0].innerText;
+    let projectName = document.getElementsByClassName("active")[0].childNodes[1].innerText;
     //console.log(projectName)
     //initalize project title header
     let head = document.createElement("h2");
