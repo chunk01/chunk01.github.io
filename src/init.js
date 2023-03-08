@@ -183,7 +183,7 @@ const init = () => {
                 }
             })
 
-            if (document.getElementsByClassName("active")[0].childNodes[0].innerText == name) {
+            if (document.getElementsByClassName("active")[0].childNodes[1].innerText == name) {
                 document.getElementById("inbox").classList.add("active");
                 document.getElementById("project").innerHTML = "";
                 contentPopulate(projectList[0])
@@ -227,14 +227,14 @@ const init = () => {
         customProjectList.appendChild(newProjectDiv);
 
         document.getElementById("buttonContainerDash").style.display = "none";
-        document.getElementById("addProject").style.display = "flex";
+        document.getElementById("addProject").style.display = "block";
     });
 
 
     //add click event listener for cancel button in add project popup button
     cancel.addEventListener("click", function () {
         document.getElementById("buttonContainerDash").style.display = "none";
-        document.getElementById("addProject").style.display = "flex";
+        document.getElementById("addProject").style.display = "block";
     });
     
     //initalize inner content element inside of main content element
