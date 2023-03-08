@@ -6,6 +6,7 @@ class Todo {
     constructor(title) {
         this.title = title;
         this.date = format(new Date(), 'yyyy-MM-dd');
+        this.checked = false;
     }
 }
 
