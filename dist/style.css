@@ -374,3 +374,8 @@ h2 {
 #titleContainer > p {
     font-size:25px;
 }
+
+.todo-check > img {
+    height:100%;
+    width:100%;
+}
