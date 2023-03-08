@@ -299,6 +299,10 @@ h2 {
     background-color: #eee;
 }
 
+.todo-check:hover {
+    cursor:pointer;
+}
+
 .todo-title {
     font-size:30px;
 }
