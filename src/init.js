@@ -59,6 +59,7 @@ const init = () => {
             dash.classList.remove("pinkify");
             innerContent.classList.remove("pinkify");
             footer.classList.remove("pinkify");
+            document.getElementById("project").classList.remove("pinkify");
             localStorage.setItem("theme-state", false);
         }
     })
@@ -269,6 +270,7 @@ const init = () => {
         dash.classList.remove("pinkify");
         innerContent.classList.remove("pinkify");
         footer.classList.remove("pinkify");
+        document.getElementById("project").classList.remove("pinkify");
     }
 
 }
@@ -278,7 +280,8 @@ function secondTheme () {
     let dash = document.getElementById("dash");
     let innerContent = document.getElementById("innerContent");
     let footer = document.getElementById("footer");
-
+    let project = document.getElementById("project");
+    project.classList.add("pinkify");
     header.classList.add("pinkify");
     dash.classList.add("pinkify");
     innerContent.classList.add("pinkify");
