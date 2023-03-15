@@ -539,6 +539,10 @@ h2 {
     opacity:90%;
 }
 
+#innerContent.pinkify > #project > #homeAddBtn{
+    color:#650015;
+}
+
 #innerContent.pinkify > #project > #homeAddBtn:hover{
     background-color:#ff6699;
 }
