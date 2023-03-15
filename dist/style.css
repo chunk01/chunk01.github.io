@@ -428,6 +428,7 @@ h2 {
     text-align: left;
     padding-left:10px;
     border-style:none;
+    border-radius: 5px;
 }
 
 #homeAddBtn:hover {
@@ -534,11 +535,34 @@ h2 {
 }
 
 #innerContent.pinkify > #project > #homeAddBtn{
-    background-color:#ffdfe5;
+    background-color:#ffccd5;
+    opacity:90%;
+}
+
+#innerContent.pinkify > #project > #homeAddBtn:hover{
+    background-color:#ff6699;
+}
+
+#innerContent.pinkify > #project > #projectHeader {
+    color:#650015;
+}
+
+#innerContent.pinkify > #project > #itemList {
+    color:#650015;
+}
+
+#innerContent.pinkify > #project > #itemList > div > #right > button {
+    color:#650015;
+}
+
+
+#innerContent.pinkify > #project > #itemList > div > #right > button:hover {
+    background-color:#ffccd5;
 }
 
 #innerContent.pinkify > #project > #itemList > div:hover{
     background-color:#ff6699;
+    opacity:85%;
 }
 
 #dash.pinkify {
@@ -571,6 +595,12 @@ h2 {
 
 #header.pinkify, #footer.pinkify {
     background-color: #ff6699;
+}
+
+#project.pinkify {
+    background-image: url("./images/flower.jpg");
+    background-size:cover;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 /* media queries */
