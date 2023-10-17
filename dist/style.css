@@ -328,6 +328,7 @@ h2 {
     padding: 50px;
     padding-bottom: 0px;
     gap:20px;
+    box-sizing: border-box;
 }
 
 #titleContainer {
